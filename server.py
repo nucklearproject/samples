@@ -8,7 +8,7 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 # ---------- Config ----------
 PORT = 5432
 ROOT = Path(".").resolve()
-IGNORE_DIRS = {".git", "node_modules", "__pycache__", ".venv"}
+IGNORE_DIRS = {".git", "node_modules", "examples", "__pycache__", ".venv"}
 ALLOW_EXTS = {".wav", ".flac", ".ogg"}  # renombrar y listar en JSON
 JSON_NAME = "strudel.json"
 # ----------------------------
@@ -45,7 +45,7 @@ def rename_files():
             print(f"[rename] {src.name} -> {dst.name}")
             src.rename(dst)
 
-def generate_json(base_url: str = "http://localhost:5432/"):
+def generate_json(base_url: str = f"http://localhost:{PORT}/"):
     """
     Genera strudel.json (agrupado por carpeta inmediata). _base se escribirá con un valor
     placeholder local; igualmente el server lo reescribe dinámicamente al responder.
@@ -200,11 +200,11 @@ class StrudelHandler(SimpleHTTPRequestHandler):
             return self.do_GET()
 
 if __name__ == "__main__":
-    # Paso 1: preparar catálogo en disco (misma lógica que tu primer script)
+    # Paso 1: preparar catálogo en disco, recrear el strudel.json
     rename_files()
     generate_json(base_url=f"http://localhost:{PORT}/")
 
-    # Paso 2: server
+    # Paso 2: levantar el server
     with ThreadingHTTPServer(("0.0.0.0", PORT), StrudelHandler) as server:
         print(f"Servidor corriendo en http://localhost:{PORT}/")
         print(f"- GET /           -> {JSON_NAME} (con _base dinámico)")

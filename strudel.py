@@ -7,7 +7,7 @@ BASE_URL = "https://raw.githubusercontent.com/nucklearproject/samples/master/"
 ROOT = Path(".").resolve()
 
 # Directorios a ignorar
-IGNORE_DIRS = {".git", "node_modules", "__pycache__", ".venv"}
+IGNORE_DIRS = {".git", "node_modules", "examples", "__pycache__", ".venv"}
 # Extensiones permitidas para renombrar y para el JSON
 ALLOW_EXTS = {".wav", ".flac", ".ogg"}
 
@@ -96,4 +96,4 @@ def generate_json():
 if __name__ == "__main__":
     rename_files()
     generate_json()
-    print("✅ Listo: renombrados los archivos de audio y generado strudel.json")
+    print("✅ Listongo: renombrados los archivos de audio y generado strudel.json")

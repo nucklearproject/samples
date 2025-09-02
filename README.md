@@ -30,6 +30,8 @@ s("PERC_per:3*4")
 -******-
 Recuerda que es un repositorio personal, pero podes usarlo libremente. No te olvides de visitar la carpeta examples. 
 
+Puede que parezca que esta desordenado, pero es solo el inicio del repositorio, cuando disponga de mas tiempo voy a ir organizandolo mejor, pero por ahora es lo que hay 😉
+
 Feliz Algorave! ☆*: .｡. o(≧▽≦)o .｡.:*☆
 
 
